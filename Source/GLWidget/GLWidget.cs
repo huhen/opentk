@@ -25,6 +25,8 @@
 //
 #endregion
 
+#define GTK3
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -35,6 +37,8 @@ using System.ComponentModel;
 using OpenTK.Graphics;
 using OpenTK.Platform;
 using OpenTK;
+
+
 
 using Gtk;
 

@@ -34,6 +34,7 @@ using System.Windows.Forms;
 using OpenTK.Examples.Properties;
 using System.Threading;
 using System.IO;
+using System.Linq;
 
 namespace Examples
 {
@@ -121,7 +122,7 @@ namespace Examples
         {
             const string no_docs = "Documentation has not been entered.";
             const string no_source = "Source code has not been entered.";
-            
+
             if (SourcePath != null && e.Node.Tag != null &&
                 !String.IsNullOrEmpty(((ExampleInfo)e.Node.Tag).Attribute.Documentation))
             {
@@ -146,7 +147,7 @@ namespace Examples
                 {
                     source = File.ReadAllText(sample_cs);
                 }
-                
+
                 if (String.IsNullOrEmpty(docs))
                     richTextBoxDescription.Text = String.Format("File {0} not found.", sample_rtf);
                 else
@@ -274,10 +275,17 @@ namespace Examples
 
         void LoadSamplesFromAssembly(Assembly assembly)
         {
-            if (assembly == null)
-                throw new ArgumentNullException("assembly");
+            if (assembly == null) throw new ArgumentNullException("assembly");
+            Type[] types;
+            try
+            {
+                types = assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                types = e.Types.Where(t => t != null).ToArray();
+            }
 
-            Type[] types = assembly.GetTypes();
             foreach (Type type in types)
             {
                 object[] attributes = type.GetCustomAttributes(false);
@@ -349,7 +357,7 @@ namespace Examples
                 if (list.Images.ContainsKey(name))
                     return list.Images.IndexOfKey(name);
             }
-            
+
             return -1;
         }
 
@@ -440,7 +448,7 @@ namespace Examples
             return false;
         }
 
-       #endregion
+        #endregion
 
         #endregion
     }
