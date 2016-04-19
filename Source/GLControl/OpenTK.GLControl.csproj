@@ -111,6 +111,18 @@
     <AssemblyOriginatorKeyFile>..\..\OpenTK.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mapsui, Version=0.8.0.0, Culture=neutral, PublicKeyToken=03e6750446d9805e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Mapsui\Mapsui\Mapsui.Rendering.OpenTK\bin\Debug\Mapsui.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapsui.Geometries, Version=0.8.0.0, Culture=neutral, PublicKeyToken=b4a92c03b317291a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Mapsui\Mapsui\Mapsui.Rendering.OpenTK\bin\Debug\Mapsui.Geometries.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapsui.Rendering.OpenTK, Version=0.8.0.0, Culture=neutral, PublicKeyToken=019e2107dcbe9aa6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Mapsui\Mapsui\Mapsui.Rendering.OpenTK\bin\Debug\Mapsui.Rendering.OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -138,6 +150,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="MapTransformHelpers.cs" />
     <Compile Include="GLControlFactory.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +163,12 @@
     </Compile>
     <Compile Include="GLControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapGLControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapGLControl.designer.cs">
+      <DependentUpon>MapGLControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Sdl2GLControl.cs" />
     <Compile Include="WinGLControl.cs">
@@ -188,6 +207,11 @@
     <None Include="..\..\OpenTK.snk">
       <Link>OpenTK.snk</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapGLControl.resx">
+      <DependentUpon>MapGLControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
