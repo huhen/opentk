@@ -297,7 +297,7 @@ namespace OpenTK
         /// </summary>
         /// <param name="mode">The OpenTK.Graphics.GraphicsMode of the control.</param>
         public MapGLControl(GraphicsMode mode)
-            : this(mode, 1, 0, GraphicsContextFlags.Default)
+            : this(mode, 4, 0, GraphicsContextFlags.Default)
         { }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace OpenTK
             {
                 Backend = PlatformBackend.PreferNative
             });
-
+            
             SetStyle(ControlStyles.Opaque, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
